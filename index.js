@@ -91,11 +91,6 @@ function DiscribeMyGraph(location) {
 //todo
 // code fragment discription?
 // ask zug?
-// 
-//
-//
-
-
 function loadImage(link) { // todo
     if(!link){
         alert("Please insert a Link into the Textbox to proceed.");
@@ -124,11 +119,3 @@ function createTextBox(beschreibung) {
     TextBoxArray.push(ret);
     return ret;    
 }
-
-
-
-
-
-
-
-
