@@ -3,7 +3,7 @@ const DivArray = [];
 let Selecttype = "Bild";
 let TheImage = document.createElement("img");
 let TheText = [];
-let WebSiteObjectArray = [];
+let WebSiteObjectArray = document.createElement("div");
 let FunctionalTextArray = [];
 // https://printjs.crabbly.com/ <------------------------------------------- PRINT
 onload = function() {
@@ -148,14 +148,22 @@ function LastState() {
 }
 
 function DisplayText(TextArray) {
-    ret = document.createElement("div");
     FunctionalTextArray = prepareText(TextArray);
-    for(let i = 0; i < TheText[i]; i++){
-
+    for(let absatz of FunctionalTextArray){
+        let abs = document.createElement("div");
+        for(let paragraph of absatz){
+            if(paragraph === ""){
+                let par = document.createElement("br");
+                abs.appendChild(par);
+                continue;
+            }
+            let par = document.createElement("div");
+            par.innerHTML = paragraph;
+            abs.appendChild(par);
+        }
+        WebSiteObjectArray.appendChild(abs); 
     }
-
-
-    return ret//has to return a div which can be placed onto the website...
+    return WebSiteObjectArray//has to return a div which can be placed onto the website...
 }
 
 function prepareText(TextArray) {
