@@ -1,8 +1,8 @@
-const TextBoxArray = []
-const DivArray = []
-let Selecttype = "Bild"
+const TextBoxArray = [];
+const DivArray = [];
+let Selecttype = "Bild";
 let TheImage = document.createElement("img");
-
+let TheText = [];
 // https://printjs.crabbly.com/ <------------------------------------------- PRINT
 onload = function() {
     DivArray.push(Beginning());
@@ -71,7 +71,23 @@ function MidState() {
         div.appendChild(imgBeschreibung);
     }
 
+    //buttons
+    let vorward = document.createElement("button");
+    let backwards = document.createElement("button");
+    vorward.innerHTML ="Continue";
+    backwards.innerHTML ="Back";
+    backwards.onclick = function() {Beginning();}
+    vorward.onclick = function() {
+        TheText = [];
+        for(let entry of TextBoxArray){ TheText.push(entry.value);} 
+        LastState();
+    }  
+    div.appendChild(backwards);
+    div.appendChild(vorward);
     SetBody(div);
+    
+    return div;
+
 }
 
 function DiscribeMyImage(location) {    
@@ -116,6 +132,27 @@ function createTextBox(beschreibung) {
 
     ret.appendChild(beschreibungsfeld);
     ret.appendChild(textfeld);
-    TextBoxArray.push(ret);
+    TextBoxArray.push(textfeld);
     return ret;    
+}
+
+function LastState() {
+    SetBody(DisplayText(TheText));
+
+}
+
+function DisplayText(TextArray) {
+    console.log(TextArray);
+    ret = document.createElement("Div");
+    for(let entry of TextArray){
+        aText = document.createElement("div");
+        aText.innerHTML = entry
+        ret.appendChild(aText);
+    }
+
+
+
+
+
+    return ret//has to return a div which can be placed onto the website...
 }
