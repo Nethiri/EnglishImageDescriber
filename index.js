@@ -3,6 +3,8 @@ const DivArray = [];
 let Selecttype = "Bild";
 let TheImage = document.createElement("img");
 let TheText = [];
+let WebSiteObjectArray = [];
+let FunctionalTextArray = [];
 // https://printjs.crabbly.com/ <------------------------------------------- PRINT
 onload = function() {
     DivArray.push(Beginning());
@@ -137,22 +139,35 @@ function createTextBox(beschreibung) {
 }
 
 function LastState() {
-    SetBody(DisplayText(TheText));
+    let div = document.createElement("div");
+    div.appendChild(TheImage);
+    TheImage.style = "display: block; margin-right: auto;"
+    div.appendChild(DisplayText(TheText));
+    SetBody(div);
 
 }
 
 function DisplayText(TextArray) {
-    console.log(TextArray);
-    ret = document.createElement("Div");
-    for(let entry of TextArray){
-        aText = document.createElement("div");
-        aText.innerHTML = entry
-        ret.appendChild(aText);
+    ret = document.createElement("div");
+    FunctionalTextArray = prepareText(TextArray);
+    for(let i = 0; i < TheText[i]; i++){
+
     }
-
-
-
 
 
     return ret//has to return a div which can be placed onto the website...
 }
+
+function prepareText(TextArray) {
+    //currently, the text consists out of the collected information of the textareas from earlyer.
+    //we now chop that up into smaller information bits to keep formatations.
+    let ret = [];
+    for(let entry of TextArray){
+        //we are now inside one of the textboxes (or rather, the information they contained)
+        //we are working now with the text directly.
+        let paragraphs = entry.split("\n");
+        ret.push(paragraphs);
+    }
+    return ret;
+}
+

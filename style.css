@@ -1,5 +1,6 @@
 body {
-    
+    margin-right: 10%;
+    margin-left: 10%;
 }
 page {
     background: white;
@@ -36,5 +37,7 @@ page[size="A5"][layout="landscape"] {
     body, page {
       margin: 0;
       box-shadow: 0;
+      
     }
+    
 }
