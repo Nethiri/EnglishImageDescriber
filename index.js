@@ -148,7 +148,7 @@ function LastState() {
     let colum1 = document.createElement("td");
     let colum2 = document.createElement("td");
     table.style = "width:100%;"
-    colum2.style ="width:50%;height:100px;";
+    colum2.style ="width:50%;height:200px;";
     colum1.style ="width:50%; background-image: url("+JSON.stringify(TheImage.src + "")+");background-size:contain;background-repeat:no-repeat;";
     row.appendChild(colum1);
     row.appendChild(colum2);
@@ -157,13 +157,13 @@ function LastState() {
     
     
     //colum1.appendChild(TheImage);
-    colum2.appendChild(document.createTextNode("Hier könnte Ihre Werbung stehen..."));
+    colum2.appendChild(HumanInformation());
     div.appendChild(document.createElement("br"));
     TheImage.style = "display: block; margin-right: auto;"
     TheImage.className = "image";
     div.appendChild(DisplayText(TheText));
     // todo: Pring Button... back? I guess?
-
+    
 
 
 
@@ -267,10 +267,7 @@ function prepareText(TextArray) {
 
 function HumanInformation() {
     let ret = document.createElement("div");
-    let table = document.createElement("table");
     let today = new Date();
-    
-
 
     let line1 = createClickableLine("Titel: ", "_ please fill in information _", true);
     let line2 = createClickableLine("Autor: ", "_ please fill in information _", true);
@@ -280,10 +277,15 @@ function HumanInformation() {
     let line6 = createClickableLine("Img. Src:", JSON.stringify(TheImage.src + "", false));
 
     ret.appendChild(line1);
+    ret.appendChild(document.createElement("br"));
     ret.appendChild(line2);
+    ret.appendChild(document.createElement("br"));
     ret.appendChild(line3);
+    ret.appendChild(document.createElement("br"));
     ret.appendChild(line4);
+    ret.appendChild(document.createElement("br"));
     ret.appendChild(line5);
+    ret.appendChild(document.createElement("br"));
     ret.appendChild(line6);
     return ret;
 }
@@ -291,14 +293,22 @@ function HumanInformation() {
 
 function createClickableLine(fixedSpan, inputSpan, editable) {
     let ret = document.createElement("div");
+    let table = document.createElement("table");
+    let tableRow = document.createElement("tr");
+    let tableCol1 = document.createElement("td");
+    let tableCol2 = document.createElement("td");
+
+    table.style = "width:100%;" 
+    tableCol1.style = "width: 30%"   
+    
     let SPANFIX = document.createElement("span");
     let SPANINPUT = document.createElement("span");
     let TStorage = "";
     let tbOpen = false;
     SPANFIX.innerHTML = fixedSpan;
     SPANINPUT.innerHTML = inputSpan;
-    ret.appendChild(SPANFIX);
-    ret.appendChild(SPANINPUT);
+    tableCol1.appendChild(SPANFIX);
+    tableCol2.appendChild(SPANINPUT);
     if(editable) {
         ret.addEventListener("dblclick", function(){
             if(tbOpen){
@@ -325,5 +335,10 @@ function createClickableLine(fixedSpan, inputSpan, editable) {
         })
 
     }
+
+    tableRow.appendChild(tableCol1);
+    tableRow.appendChild(tableCol2);
+    table.appendChild(tableRow);
+    ret.appendChild(table);
     return ret
 }
