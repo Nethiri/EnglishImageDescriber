@@ -51,18 +51,18 @@ function Beginning() {
     HowToSkip.innerHTML = "Or you can load an unfinished project by clicking below.";
     HowToSkip.style = "display: block;text-align: center;line-height: 150%;font-size: 1em;";
 
-    HowToUse.innerHTML = "In order to use this tool. Please insert a Link to an Image you'd like to discribe below.";
+    HowToUse.innerHTML = "In order to use this tool, please insert a link to an image you'd like to describe below.";
     HowToUse.style = "display: block;text-align: center;line-height: 150%;font-size: 1em;"
     button.style ="width:90";
-    textBox.style ="width:160";
+    textBox.style ="width:140";
     let select = document.createElement("select");
-    select.style ="width:50;height:22";
+    select.style ="width:70;height:22";
     let opt1 = document.createElement("option");
     let opt2 = document.createElement("option");
 
     opt1.value = "Bild";
     opt2.value = "Graph";
-    opt1.appendChild(document.createTextNode("Bild"));
+    opt1.appendChild(document.createTextNode("Picture"));
     opt2.appendChild(document.createTextNode("Graph"));
     select.appendChild(opt1);
     select.appendChild(opt2);
@@ -123,17 +123,17 @@ function MidState() {
 }
 
 function DiscribeMyImage(location) {    
-    location.appendChild(createTextBox("To capture the attention of your readers, you should start with a good introduction phrase(s).<br><br>Here are some examples you may use:<br>If you look at this picture, you will see...<br>In the Picture you can see...<br>The Pricture shows...<br>"));
+    location.appendChild(createTextBox("To capture the attention of your readers, you should start with a good introduction phrase(s).<br><br>Here are some examples you may use:<br>If you look at this picture, you will see...<br>In the picture you can see...<br>The pricture shows...<br>"));
     location.appendChild(createTextBox("Now that we have the attention of your reader, and we have a general understanding on what is been displayed, you should start looking at details.<br><br>Here are some examples on how to continue:<br>The image we are looking at has been painted/taken at...<br>When you look at the image, you can see that it is a black and white...<br>This picture is a... picture and has been taken by...<br>"));
-    location.appendChild(createTextBox("Okay... we should now have finished the introduction of your discription.<Br><Br>So, now please discribe the picture and use Phrases like:<br>In the forthground of the picte you will...<Br>In the background you can see that...<Br>In the right/left/center...<br>Between ... there is ...<br>At the top/At the bottom there is...<br>"));
-    location.appendChild(createTextBox("Now we know what we see on the picture. Lets focus now on who is doing what or what is going on.<br><br>To take some examples:<br>The... is talking to...<br>... is guesturing to...<br>"));
+    location.appendChild(createTextBox("Okay... we should now have finished the introduction of your discription.<Br><Br>So, now please describe the picture and use phrases like:<br>In the foreground of the picture you will...<Br>In the background you can see that...<Br>In the right/left/center...<br>Between ... there is ...<br>At the top/At the bottom there is...<br>"));
+    location.appendChild(createTextBox("Now we know what we see on the picture. Lets focus now on who is doing what or what is going on.<br><br>To take some examples:<br>The... is talking to...<br>... is gesturing to...<br>"));
     location.appendChild(createTextBox("So, that all is fine and dandy, lets now focus on what you are thinking... What do you think is the meaning of the picture?<br><br>Here are some examples:<br>It seems as if...<br>... might be a simbole of ... because...<br>I (don't) like ... because<br>... makes me think of ...<br>"));
 }
 
 function DiscribeMyGraph(location) {
     location.appendChild(createTextBox("To capture the attention of your readers, you should start with a good introduction phrase(s).<br><br>Here are some examples you may use:<br>Let me show you this bar graph...<br>Let's turn to this diagram...<br>I'd like you to look at this map...<br>"));
     location.appendChild(createTextBox("Now that we have the attention of your reader, and we have a general understanding of what has been displayed, you should start looking at details.<br><br>Here are some examples on how to continue:<br>The graph we are looking at has been published by...<br>The vertical axis shows...<br>Ther horizontal axis shows..."));
-    location.appendChild(createTextBox("Okay... we should now have finished the introduction of your discription.<br><br>Consider phrases like:<br>So, now please discribe what you see and the meaning of the informations displayed.<br>Each number are quivalent to 1 million...<br>The ... rises/increased/decreased/flattens...<br>The graph rapidly..."));
+    location.appendChild(createTextBox("Okay... we should now have finished the introduction of your discription.<br><br>Consider phrases like:<br>So, now please describe what you see and the meaning of the information displayed.<br>Each number are equivalent to 1 million...<br>The ... rises/increased/decreased/flattens...<br>The graph rapidly..."));
     location.appendChild(createTextBox("Okay... lets bring that baby home guys. Let us finish with the conclusion, and we are done here!<br><br>Here are some examples to use:<br>Overall, we can see that...<br>In the end, you'll see...<br>From this we can conclude...<br>"));
 }
 //todo
@@ -315,7 +315,7 @@ function HumanInformation(data) {
     let ret = document.createElement("div");
 
     let line1 = createClickableLine("Title: ", data.title, true, false, (x)=>data.title = x);
-    let line2 = createClickableLine("Autor: ", data.autor, true, true, (x)=>data.autor = x);
+    let line2 = createClickableLine("Author: ", data.autor, true, true, (x)=>data.autor = x);
     let line3 = createClickableLine("Reviewer: ", data.reviewer, true, true, (x)=> data.reviewer = x);
     let line4 = createClickableLine("Date: ",  new Date(data.date).toLocaleDateString() ,false, false);
     let line5 = createClickableLine("Examiner: ", data.examiner, true, true, (x)=> data.examiner = x);
