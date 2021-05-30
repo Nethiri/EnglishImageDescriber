@@ -1,3 +1,8 @@
+* {
+    -webkit-print-color-adjust: exact !important;   
+    color-adjust: exact !important;                 
+}
+
 body {
     margin-right: 10%;
     margin-left: 10%;
@@ -31,7 +36,7 @@ page[size="A5"] {
 }
 page[size="A5"][layout="landscape"] {
     width: 21cm;
-    height: 14.8cm;  
+    height: 14.8cm;
 }
 @media print {
     body, page {
@@ -39,5 +44,11 @@ page[size="A5"][layout="landscape"] {
       box-shadow: 0;
       
     }
-    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+    .image, .image *{
+        
+    }    
 }

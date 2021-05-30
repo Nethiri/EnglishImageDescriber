@@ -140,18 +140,51 @@ function createTextBox(beschreibung) {
 
 function LastState() {
     let div = document.createElement("div");
-    div.appendChild(TheImage);
+    
+    
+    let table = document.createElement("table");
+    let row = document.createElement("tr");
+    let colum1 = document.createElement("td");
+    let colum2 = document.createElement("td");
+    table.style = "width:100%;"
+    colum2.style ="width:50%;height:100px;";
+    colum1.style ="width:50%; background-image: url("+JSON.stringify(TheImage.src + "")+");background-size:contain;background-repeat:no-repeat;";
+    row.appendChild(colum1);
+    row.appendChild(colum2);
+    table.appendChild(row);
+    div.appendChild(table);    
+    
+    
+    //colum1.appendChild(TheImage);
+    colum2.appendChild(document.createTextNode("Hier könnte Ihre Werbung stehen..."));
+    div.appendChild(document.createElement("br"));
     TheImage.style = "display: block; margin-right: auto;"
+    TheImage.className = "image";
     div.appendChild(DisplayText(TheText));
+    // todo: Pring Button... back? I guess?
+
+
+
+
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Print";
+    btn.className = "no-print";
+
+    btn.onclick = function() {
+        window.print();
+    }
+    div.appendChild(btn);
+    
     SetBody(div);
 
 }
 
 function DisplayText(TextArray) {
     FunctionalTextArray = prepareText(TextArray);
-    for(let absatz of FunctionalTextArray){
+    for(let i = 0; i<FunctionalTextArray.length; i++){ //FunctionalTextArray[i] of FunctionalTextArray){      // let absatz of FunctionalTextArray - - - absatz -> functionalTextArray[i]
         let abs = document.createElement("div");
-        for(let paragraph of absatz){
+        for(let paragraph of FunctionalTextArray[i]){
             if(paragraph === ""){
                 let par = document.createElement("br");
                 abs.appendChild(par);
@@ -161,6 +194,58 @@ function DisplayText(TextArray) {
             par.innerHTML = paragraph;
             abs.appendChild(par);
         }
+        // make absatz klickable
+        let tbOpen = false;
+        abs.addEventListener("dblclick", function(e){ // functions to make the text editable...
+            //what happens when an absatz has been double clicked on...
+            console.log(e);
+            //check if we are already inside the textbox, to dont open it twice...
+            if(tbOpen){
+                return;
+            }
+            tbOpen = true;
+            abs.innerHTML = "";
+            let tbtemp = document.createElement("textarea");
+            tbtemp.style = "width:100%; height:300px;"
+            //fill with the informations that where usally contained in the div
+            for(let paragraph of FunctionalTextArray[i]){
+                if(paragraph === ""){
+                    //line
+                    tbtemp.value += "\n\n";
+                    continue;
+                }
+                //normal value
+                tbtemp.value += paragraph;
+            }
+            tbtemp.onchange = function() {
+                //function which puts the text back into Functional TextArray 
+                //todo
+                FunctionalTextArray[i] = tbtemp.value.split("\n");
+                console.log("On Change");
+                console.log(tbtemp);                
+            }
+            abs.appendChild(tbtemp);
+            tbtemp.focus();
+            tbtemp.addEventListener("focusout", function() {
+                //when out of focus, create a function, that puts all the text in the tb back into the usual div format...
+                FunctionalTextArray[i] = tbtemp.value.split("\n");
+                //display again
+                abs.innerHTML = ""
+                for(let paragraph of FunctionalTextArray[i]){
+                    if(paragraph === ""){
+                        let par = document.createElement("br");
+                        abs.appendChild(par);
+                        continue;
+                    }
+                    let par = document.createElement("div");
+                    par.innerHTML = paragraph;
+                    abs.appendChild(par);
+                }
+                tbOpen = false;
+                console.log("On Focus Out");
+                console.log(tbtemp);
+            })
+        })
         WebSiteObjectArray.appendChild(abs); 
     }
     return WebSiteObjectArray//has to return a div which can be placed onto the website...
