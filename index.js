@@ -269,12 +269,12 @@ function HumanInformation() {
     let ret = document.createElement("div");
     let today = new Date();
 
-    let line1 = createClickableLine("Titel: ", "_ please fill in information _", true);
-    let line2 = createClickableLine("Autor: ", "_ please fill in information _", true);
-    let line3 = createClickableLine("Reviewer: ", "_ please fill in information _", true);
-    let line4 = createClickableLine("Datum: ", today.getMonth() + "." + today.getDate() + "." + today.getFullYear() ,false);
-    let line5 = createClickableLine("Examiner: ", "_ please fill in information _", true);
-    let line6 = createClickableLine("Img. Src:", JSON.stringify(TheImage.src + "", false));
+    let line1 = createClickableLine("Titel: ", "_ please fill in information _", true, false);
+    let line2 = createClickableLine("Autor: ", "_ please fill in information _", true, true);
+    let line3 = createClickableLine("Reviewer: ", "_ please fill in information _", true, true);
+    let line4 = createClickableLine("Datum: ", today.getMonth() + "." + today.getDate() + "." + today.getFullYear() ,false, false);
+    let line5 = createClickableLine("Examiner: ", "_ please fill in information _", true, true);
+    let line6 = createClickableLine("Img. Src:", JSON.stringify(TheImage.src + "", false), false, true);
 
     ret.appendChild(line1);
     ret.appendChild(document.createElement("br"));
@@ -291,7 +291,7 @@ function HumanInformation() {
 }
 
 
-function createClickableLine(fixedSpan, inputSpan, editable) {
+function createClickableLine(fixedSpan, inputSpan, editable, toPrint) {
     let ret = document.createElement("div");
     let table = document.createElement("table");
     let tableRow = document.createElement("tr");
@@ -299,7 +299,7 @@ function createClickableLine(fixedSpan, inputSpan, editable) {
     let tableCol2 = document.createElement("td");
 
     table.style = "width:100%;" 
-    tableCol1.style = "width: 30%"   
+    tableCol1.style = "width: 10%"   
     
     let SPANFIX = document.createElement("span");
     let SPANINPUT = document.createElement("span");
@@ -338,6 +338,11 @@ function createClickableLine(fixedSpan, inputSpan, editable) {
 
     tableRow.appendChild(tableCol1);
     tableRow.appendChild(tableCol2);
+
+    if(!toPrint) {
+        tableCol1.className = "no-print";
+    }
+
     table.appendChild(tableRow);
     ret.appendChild(table);
     return ret
