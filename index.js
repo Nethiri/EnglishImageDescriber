@@ -24,6 +24,15 @@ function Beginning() {
     let button = document.createElement("button");
     let textBox = document.createElement("input");
     let HowToUse = document.createElement("label");
+    
+    let fileselector = document.createElement("input");
+    fileselector.type = "file";
+    fileselector.defaultValue = "";
+    fileselector.onchange = function() {
+        alert(fileselector.value);
+    }
+
+
     HowToUse.innerHTML = "In order to use this tool. Please insert a Link to an Image you'd like to discribe below.";
     HowToUse.style = "display: block;text-align: center;line-height: 150%;font-size: 1em;"
     button.style ="width:90";
@@ -50,7 +59,8 @@ function Beginning() {
     div.appendChild(HowToUse);
     div.appendChild(textBox);
     div.appendChild(button);
-    div.appendChild(select)
+    div.appendChild(select);
+    div.appendChild(fileselector);
     div.style = "position:fixed;z-index: 100;top:50%;left:47%;margin:-100px 0 0 -100px;width:300px;height:300px;"
     SetBody(div);
     return div;
@@ -171,11 +181,18 @@ function LastState() {
     let btn = document.createElement("button");
     btn.innerHTML = "Print";
     btn.className = "no-print";
+    let jsonBtn = document.createElement("button");
+    jsonBtn.innerHTML ="Create Workfile";
+    jsonBtn.className = "no-print";
 
     btn.onclick = function() {
         window.print();
     }
     div.appendChild(btn);
+    jsonBtn.addEventListener("click", function(){
+        downloadJSON();
+    });
+    div.appendChild(jsonBtn);
     
     SetBody(div);
 
@@ -274,7 +291,7 @@ function HumanInformation() {
     let line3 = createClickableLine("Reviewer: ", "_ please fill in information _", true, true);
     let line4 = createClickableLine("Datum: ", today.getMonth() + "." + today.getDate() + "." + today.getFullYear() ,false, false);
     let line5 = createClickableLine("Examiner: ", "_ please fill in information _", true, true);
-    let line6 = createClickableLine("Img. Src:", JSON.stringify(TheImage.src + "", false), false, true);
+    let line6 = createClickableLine("Img. Src:", JSON.stringify(TheImage.src + ""), false, true);
 
     ret.appendChild(line1);
     ret.appendChild(document.createElement("br"));
@@ -346,4 +363,28 @@ function createClickableLine(fixedSpan, inputSpan, editable, toPrint) {
     table.appendChild(tableRow);
     ret.appendChild(table);
     return ret
+}
+
+function downloadJSON() {
+    let dataheap = [];
+    dataheap.push(JSON.stringify(TheImage.src + ""));
+    dataheap.push(FunctionalTextArray);
+    dataheap.push(HumanInformationsArray); // have to figure out how to get the data insite though... array currently empty... !!!!!!!!!!!!!!
+
+    let json = JSON.stringify(dataheap);
+    json = [json];
+    let blob1 = new Blob(json, {type: "text/plain;charset=utf-8"});
+    let isIE = false;
+    if(isIE){
+        window.navigator.msSaveBlob(blob1, "ImageDiscription.txt");
+    } else{
+        let url = window.URL || window.webkitURL;
+        link = url.createObjectURL(blob1);
+        var a = document.createElement("a");
+        a.download = "ImageDiscription.txt";
+        a.href = link;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
 }
