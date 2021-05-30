@@ -2,10 +2,11 @@ const TextBoxArray = [];
 const DivArray = [];
 let Selecttype = "Bild";
 let TheImage = document.createElement("img");
-let TheText = [];
+let TheText = undefined;
 let WebSiteObjectArray = document.createElement("div");
 let FunctionalTextArray = [];
-let HumanInformationsArray = [];
+let HumanInformationData = undefined;
+let loadedfile = undefined;
 // https://printjs.crabbly.com/ <------------------------------------------- PRINT
 onload = function() {
     DivArray.push(Beginning());
@@ -24,14 +25,31 @@ function Beginning() {
     let button = document.createElement("button");
     let textBox = document.createElement("input");
     let HowToUse = document.createElement("label");
-    
+    let HowToSkip = document.createElement("label");
+
     let fileselector = document.createElement("input");
     fileselector.type = "file";
     fileselector.defaultValue = "";
-    fileselector.onchange = function() {
-        alert(fileselector.value);
-    }
+    fileselector.onchange = function(e) {
+        let fr = new FileReader();
+        fr.onload = function(ev){
+            try{
+                console.log(ev.target.result);
+                let data = JSON.parse(ev.target.result);
+                console.log(data);
+                TheText = data.text;
+                HumanInformationData = data.human;
+                TheImage.src = data.source;
+                LastState();
 
+            }   catch(ex){
+                alert(ex);
+            }
+        }
+        fr.readAsText(e.target.files[0]);
+    }
+    HowToSkip.innerHTML = "Or you can load an unfinished project by clicking below.";
+    HowToSkip.style = "display: block;text-align: center;line-height: 150%;font-size: 1em;";
 
     HowToUse.innerHTML = "In order to use this tool. Please insert a Link to an Image you'd like to discribe below.";
     HowToUse.style = "display: block;text-align: center;line-height: 150%;font-size: 1em;"
@@ -60,6 +78,7 @@ function Beginning() {
     div.appendChild(textBox);
     div.appendChild(button);
     div.appendChild(select);
+    div.appendChild(HowToSkip);
     div.appendChild(fileselector);
     div.style = "position:fixed;z-index: 100;top:50%;left:47%;margin:-100px 0 0 -100px;width:300px;height:300px;"
     SetBody(div);
@@ -151,8 +170,7 @@ function createTextBox(beschreibung) {
 
 function LastState() {
     let div = document.createElement("div");
-    
-    
+        
     let table = document.createElement("table");
     let row = document.createElement("tr");
     let colum1 = document.createElement("td");
@@ -167,7 +185,16 @@ function LastState() {
     
     
     //colum1.appendChild(TheImage);
-    colum2.appendChild(HumanInformation());
+    if(HumanInformationData === undefined){
+        HumanInformationData = {
+            "title": "_ please fill in information _",
+            "autor": "_ please fill in information _",
+            "reviewer": "_ please fill in information _",
+            "examiner": "_ please fill in information _",
+            "date": new Date().getTime()
+        };
+    }
+    colum2.appendChild(HumanInformation(HumanInformationData));
     div.appendChild(document.createElement("br"));
     TheImage.style = "display: block; margin-right: auto;"
     TheImage.className = "image";
@@ -247,7 +274,8 @@ function DisplayText(TextArray) {
             tbtemp.addEventListener("focusout", function() {
                 //when out of focus, create a function, that puts all the text in the tb back into the usual div format...
                 FunctionalTextArray[i] = tbtemp.value.split("\n");
-                //display again
+                TheText[i] = tbtemp.value;
+
                 abs.innerHTML = ""
                 for(let paragraph of FunctionalTextArray[i]){
                     if(paragraph === ""){
@@ -264,7 +292,8 @@ function DisplayText(TextArray) {
                 console.log(tbtemp);
             })
         })
-        WebSiteObjectArray.appendChild(abs); 
+        WebSiteObjectArray.appendChild(abs);
+        WebSiteObjectArray.appendChild(document.createElement("br"));
     }
     return WebSiteObjectArray//has to return a div which can be placed onto the website...
 }
@@ -282,15 +311,14 @@ function prepareText(TextArray) {
     return ret;
 }
 
-function HumanInformation() {
+function HumanInformation(data) {
     let ret = document.createElement("div");
-    let today = new Date();
 
-    let line1 = createClickableLine("Titel: ", "_ please fill in information _", true, false);
-    let line2 = createClickableLine("Autor: ", "_ please fill in information _", true, true);
-    let line3 = createClickableLine("Reviewer: ", "_ please fill in information _", true, true);
-    let line4 = createClickableLine("Datum: ", today.getMonth() + "." + today.getDate() + "." + today.getFullYear() ,false, false);
-    let line5 = createClickableLine("Examiner: ", "_ please fill in information _", true, true);
+    let line1 = createClickableLine("Title: ", data.title, true, false, (x)=>data.title = x);
+    let line2 = createClickableLine("Autor: ", data.autor, true, true, (x)=>data.autor = x);
+    let line3 = createClickableLine("Reviewer: ", data.reviewer, true, true, (x)=> data.reviewer = x);
+    let line4 = createClickableLine("Date: ",  new Date(data.date).toString() ,false, false);
+    let line5 = createClickableLine("Examiner: ", data.examiner, true, true, (x)=> data.examiner = x);
     let line6 = createClickableLine("Img. Src:", JSON.stringify(TheImage.src + ""), false, true);
 
     ret.appendChild(line1);
@@ -308,7 +336,7 @@ function HumanInformation() {
 }
 
 
-function createClickableLine(fixedSpan, inputSpan, editable, toPrint) {
+function createClickableLine(fixedSpan, inputSpan, editable, toPrint, writebackFunction) {
     let ret = document.createElement("div");
     let table = document.createElement("table");
     let tableRow = document.createElement("tr");
@@ -348,6 +376,9 @@ function createClickableLine(fixedSpan, inputSpan, editable, toPrint) {
                 tbOpen = false;
                 SPANINPUT.innerHTML = "";
                 SPANINPUT.innerHTML = tbtemp.value;
+                if(writebackFunction !== undefined) {
+                    writebackFunction(tbtemp.value);
+                }   
             })
         })
 
@@ -366,22 +397,23 @@ function createClickableLine(fixedSpan, inputSpan, editable, toPrint) {
 }
 
 function downloadJSON() {
-    let dataheap = [];
-    dataheap.push(JSON.stringify(TheImage.src + ""));
-    dataheap.push(FunctionalTextArray);
-    dataheap.push(HumanInformationsArray); // have to figure out how to get the data insite though... array currently empty... !!!!!!!!!!!!!!
+    let dataheap = {
+        "source" : TheImage.src,
+        "text" : TheText,
+        "human" : HumanInformationData
+    };
 
     let json = JSON.stringify(dataheap);
     json = [json];
     let blob1 = new Blob(json, {type: "text/plain;charset=utf-8"});
     let isIE = false;
     if(isIE){
-        window.navigator.msSaveBlob(blob1, "ImageDiscription.txt");
+        window.navigator.msSaveBlob(blob1, "ImageDiscription.json");
     } else{
         let url = window.URL || window.webkitURL;
         link = url.createObjectURL(blob1);
         var a = document.createElement("a");
-        a.download = "ImageDiscription.txt";
+        a.download = "ImageDiscription.json";
         a.href = link;
         document.body.appendChild(a);
         a.click();
