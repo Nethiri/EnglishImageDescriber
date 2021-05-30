@@ -268,13 +268,14 @@ function prepareText(TextArray) {
 function HumanInformation() {
     let ret = document.createElement("div");
     let table = document.createElement("table");
+    let today = new Date();
     
 
 
     let line1 = createClickableLine("Titel: ", "_ please fill in information _", true);
     let line2 = createClickableLine("Autor: ", "_ please fill in information _", true);
     let line3 = createClickableLine("Reviewer: ", "_ please fill in information _", true);
-    let line4 = createClickableLine("Datum: ", Date.now().toString() ,false);
+    let line4 = createClickableLine("Datum: ", today.getMonth() + "." + today.getDate() + "." + today.getFullYear() ,false);
     let line5 = createClickableLine("Examiner: ", "_ please fill in information _", true);
     let line6 = createClickableLine("Img. Src:", JSON.stringify(TheImage.src + "", false));
 
@@ -292,14 +293,37 @@ function createClickableLine(fixedSpan, inputSpan, editable) {
     let ret = document.createElement("div");
     let SPANFIX = document.createElement("span");
     let SPANINPUT = document.createElement("span");
+    let TStorage = "";
+    let tbOpen = false;
     SPANFIX.innerHTML = fixedSpan;
     SPANINPUT.innerHTML = inputSpan;
     ret.appendChild(SPANFIX);
     ret.appendChild(SPANINPUT);
     if(editable) {
         ret.addEventListener("dblclick", function(){
-            //todo
+            if(tbOpen){
+                return;
+            }
+            tbOpen = true;
+            TStorage = SPANINPUT.innerHTML;
+            console.log(TStorage);
+            SPANINPUT.innerHTML = "";
+            let tbtemp = document.createElement("input");
+            tbtemp.type = "text";
+            tbtemp.value = TStorage;
+            tbtemp.size = TStorage.length * 1.1;
+            tbtemp.onchange = function() {
+                TStorage = tbtemp.value;
+            }
+            SPANINPUT.appendChild(tbtemp);
+            tbtemp.focus();
+            tbtemp.addEventListener("focusout", function() {
+                tbOpen = false;
+                SPANINPUT.innerHTML = "";
+                SPANINPUT.innerHTML = tbtemp.value;
+            })
         })
+
     }
     return ret
 }
