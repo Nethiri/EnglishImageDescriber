@@ -317,7 +317,7 @@ function HumanInformation(data) {
     let line1 = createClickableLine("Title: ", data.title, true, false, (x)=>data.title = x);
     let line2 = createClickableLine("Autor: ", data.autor, true, true, (x)=>data.autor = x);
     let line3 = createClickableLine("Reviewer: ", data.reviewer, true, true, (x)=> data.reviewer = x);
-    let line4 = createClickableLine("Date: ",  new Date(data.date).toString() ,false, false);
+    let line4 = createClickableLine("Date: ",  new Date(data.date).toLocaleDateString() ,false, false);
     let line5 = createClickableLine("Examiner: ", data.examiner, true, true, (x)=> data.examiner = x);
     let line6 = createClickableLine("Img. Src:", JSON.stringify(TheImage.src + ""), false, true);
 
