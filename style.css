@@ -47,8 +47,5 @@ page[size="A5"][layout="landscape"] {
     .no-print, .no-print *
     {
         display: none !important;
-    }
-    .image, .image *{
-        
-    }    
+    } 
 }

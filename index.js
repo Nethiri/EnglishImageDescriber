@@ -5,6 +5,7 @@ let TheImage = document.createElement("img");
 let TheText = [];
 let WebSiteObjectArray = document.createElement("div");
 let FunctionalTextArray = [];
+let HumanInformationsArray = [];
 // https://printjs.crabbly.com/ <------------------------------------------- PRINT
 onload = function() {
     DivArray.push(Beginning());
@@ -182,7 +183,7 @@ function LastState() {
 
 function DisplayText(TextArray) {
     FunctionalTextArray = prepareText(TextArray);
-    for(let i = 0; i<FunctionalTextArray.length; i++){ //FunctionalTextArray[i] of FunctionalTextArray){      // let absatz of FunctionalTextArray - - - absatz -> functionalTextArray[i]
+    for(let i = 0; i<FunctionalTextArray.length; i++){
         let abs = document.createElement("div");
         for(let paragraph of FunctionalTextArray[i]){
             if(paragraph === ""){
@@ -264,3 +265,41 @@ function prepareText(TextArray) {
     return ret;
 }
 
+function HumanInformation() {
+    let ret = document.createElement("div");
+    let table = document.createElement("table");
+    
+
+
+    let line1 = createClickableLine("Titel: ", "_ please fill in information _", true);
+    let line2 = createClickableLine("Autor: ", "_ please fill in information _", true);
+    let line3 = createClickableLine("Reviewer: ", "_ please fill in information _", true);
+    let line4 = createClickableLine("Datum: ", Date.now().toString() ,false);
+    let line5 = createClickableLine("Examiner: ", "_ please fill in information _", true);
+    let line6 = createClickableLine("Img. Src:", JSON.stringify(TheImage.src + "", false));
+
+    ret.appendChild(line1);
+    ret.appendChild(line2);
+    ret.appendChild(line3);
+    ret.appendChild(line4);
+    ret.appendChild(line5);
+    ret.appendChild(line6);
+    return ret;
+}
+
+
+function createClickableLine(fixedSpan, inputSpan, editable) {
+    let ret = document.createElement("div");
+    let SPANFIX = document.createElement("span");
+    let SPANINPUT = document.createElement("span");
+    SPANFIX.innerHTML = fixedSpan;
+    SPANINPUT.innerHTML = inputSpan;
+    ret.appendChild(SPANFIX);
+    ret.appendChild(SPANINPUT);
+    if(editable) {
+        ret.addEventListener("dblclick", function(){
+            //todo
+        })
+    }
+    return ret
+}
