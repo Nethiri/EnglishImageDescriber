@@ -123,7 +123,7 @@ function MidState() {
 }
 
 function DiscribeMyImage(location) {    
-    location.appendChild(createTextBox("To capture the attention of your readers, you should start with a good introduction phrase(s).<br><br>Here are some examples you may use:<br>If you look at this picture, you will see...<br>In the picture you can see...<br>The pricture shows...<br>"));
+    location.appendChild(createTextBox("To capture the attention of your readers, you should start with a good introduction phrase(s).<br><br>Here are some examples you may use:<br>If you look at this picture, you will see...<br>In the picture you can see...<br>The picture shows...<br>"));
     location.appendChild(createTextBox("Now that we have the attention of your reader, and we have a general understanding on what is been displayed, you should start looking at details.<br><br>Here are some examples on how to continue:<br>The image we are looking at has been painted/taken at...<br>When you look at the image, you can see that it is a black and white...<br>This picture is a... picture and has been taken by...<br>"));
     location.appendChild(createTextBox("Okay... we should now have finished the introduction of your discription.<Br><Br>So, now please describe the picture and use phrases like:<br>In the foreground of the picture you will...<Br>In the background you can see that...<Br>In the right/left/center...<br>Between ... there is ...<br>At the top/At the bottom there is...<br>"));
     location.appendChild(createTextBox("Now we know what we see on the picture. Lets focus now on who is doing what or what is going on.<br><br>To take some examples:<br>The... is talking to...<br>... is gesturing to...<br>"));
