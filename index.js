@@ -59,13 +59,17 @@ function Beginning() {
     select.style ="width:70;height:22";
     let opt1 = document.createElement("option");
     let opt2 = document.createElement("option");
+    let opt3 = document.createElement("option");
 
     opt1.value = "Bild";
     opt2.value = "Graph";
+    opt3.value = "Code"
     opt1.appendChild(document.createTextNode("Picture"));
     opt2.appendChild(document.createTextNode("Graph"));
+    opt3.appendChild(document.createTextNode("Code"));
     select.appendChild(opt1);
     select.appendChild(opt2);
+    select.appendChild(opt3);
     select.onchange = function() {
         Selecttype = select.value
     }
@@ -98,11 +102,14 @@ function MidState() {
         DiscribeMyGraph(imgBeschreibung);
         div.appendChild(imgBeschreibung);
     }
-    else{    
+    else if(Selecttype === "Bild"){    
         DiscribeMyImage(imgBeschreibung);
         div.appendChild(imgBeschreibung);
     }
-
+    else{
+        DiscribeMyCode(imgBeschreibung);
+        div.appendChild(imgBeschreibung);
+    }
     //buttons
     let vorward = document.createElement("button");
     let backwards = document.createElement("button");
@@ -135,6 +142,14 @@ function DiscribeMyGraph(location) {
     location.appendChild(createTextBox("Now that we have the attention of your reader, and we have a general understanding of what has been displayed, you should start looking at details.<br><br>Here are some examples on how to continue:<br>The graph we are looking at has been published by...<br>The vertical axis shows...<br>Ther horizontal axis shows..."));
     location.appendChild(createTextBox("Okay... we should now have finished the introduction of your description.<br><br>Consider phrases like:<br>So, now please describe what you see and the meaning of the information displayed.<br>Each number are equivalent to 1 million...<br>The ... rises/increased/decreased/flattens...<br>The graph rapidly..."));
     location.appendChild(createTextBox("Okay... lets bring that baby home guys. Let us finish with the conclusion, and we are done here!<br><br>Here are some examples to use:<br>Overall, we can see that...<br>In the end, you'll see...<br>From this we can conclude...<br>"));
+}
+
+function DiscribeMyCode(location) {
+    location.appendChild(createTextBox("Code descriptions are a bit more unorthodox than normal image descriptions.<br>So, what do we have to look for in a code description?<br><br>First of all, we have to figure out, what is this code specificly...<br><br>Here are some examples which may help you do just that:<br>Looking at the code(snipped) as a whole, you can see that...<br>This code(snipped) has been written in...<br>This code(snipped) is a ... which returns a ..."));
+    location.appendChild(createTextBox("What is this code all about?<br>Discribe what you think it is used for, or where you have found it...<br><br>Some helpful examples:<br>The [...] uses this [...] for...<br>One might need this in...<br>When you are... you might need a function like this to..."));
+    location.appendChild(createTextBox("Okay, furthermore, we have to now look at the code in more detail. What can you see?<br>This might be atchieved by looking at it line by line...<br><br>Here are some examples which might help you:<br>In the first line you can see that it is a call to a...<br>In Line [...] you can see, that variable [...] is defined with...<br>In the next line, the previouly defined... is used for..."));
+    location.appendChild(createTextBox("Code is never perfect... have you spotted a mistake? Can't this code run at all because of it, or may the compiler throw out a warning...<br>Let's write about it, and remember 'Be the compiler'<br><br>Here are some examples which might help:<br>In Line [...], the pointer to the variable [...] is used instead of the...<br>The line has not been compleated and there is a [...] missing at the end.<br>The ... of the function is undefined..."));
+
 }
 //todo
 // code fragment discription?
