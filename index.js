@@ -11,11 +11,14 @@ let loadedfile = undefined;
 onload = function() {
     DivArray.push(Beginning());
 }
+
 function SetBody(div) {
     RestBody();
     document.getElementsByTagName("body")[0].appendChild(div);
+    //document.getElementById("Klaus").appendChild(div);
 }
 function RestBody() {
+    //document.getElementById("Klaus").innerHTML = "";
     document.getElementsByTagName("body")[0].innerHTML = "";
 }
 
