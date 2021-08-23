@@ -39,6 +39,7 @@ function LiaBeginning() {
             alert(BeginTB);
         }
     });
+    textBox.style.width = '100%'
     let myBox = genEntry({
         direction: "column",
         content: [textBox],
@@ -53,8 +54,9 @@ function LiaBeginning() {
     // HERE IS A PROBLEM!!!
         
     add(LoadImageDiv, myBox);
-    add(LoadImageDiv, selection);
+    //add(LoadImageDiv, selection);
     set("LoadImage" ,LoadImageDiv);
+    
 }
 
 

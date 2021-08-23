@@ -23,7 +23,7 @@ link: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul.css
 comment:  Try to write a short comment about
           your course, multiline is also okay.
 -->
-# ImageDiscriber
+# ImageDescriber
 * The application will help you learn how to propperly describe an image
 * In order to use this tool, please insert a link to an image you'd like to describe below
 * You may find such a link by copying the direct image parth to it from a website
