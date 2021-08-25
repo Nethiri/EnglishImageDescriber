@@ -1,0 +1,30 @@
+#LinkBox {
+    width: 75%;
+    border: 2px solid lightseagreen;
+}
+
+button {
+    background-color: lightseagreen;
+}
+
+select { /*todo*/
+    appearance: none;
+    padding: 10px 20px 10px 10px;
+    background: url("http://localhost:3000/home/img/select.png") no-repeat 95% center;
+    background-color: lightseagreen;
+}
+
+input[type=file]::file-selector-button {
+    position: relative;
+    appearance: none;
+    border: none;
+    left: -8px;
+    background-color: lightseagreen;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 14px;
+    border-radius: 10px;
+}
+
+
+

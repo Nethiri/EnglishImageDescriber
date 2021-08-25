@@ -8,7 +8,10 @@ version:  0.0.1
 language: en
 
 narrator: US English Female
-script: http://localhost:3000/home/liascriptIndex.js
+
+script: http://localhost:3000/home/newliaIndex.js
+
+link: http://localhost:3000/home/style.css
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
 
@@ -20,9 +23,12 @@ script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul-lia-brid
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul.js
 link: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul.css
 
+
+
 comment:  Try to write a short comment about
           your course, multiline is also okay.
 -->
+
 # ImageDescriber
 * The application will help you learn how to propperly describe an image
 * In order to use this tool, please insert a link to an image you'd like to describe below
@@ -35,8 +41,14 @@ comment:  Try to write a short comment about
 * If you already have an ongoing project though, you'd probably want to reload where you left of... please do so below
 <span id="LoadProject"></span>
 
+<script input="hidden"> PageOneScript() </script>
 
 
 
-<script input="hidden"> DivArray.push(LiaBeginning()) </script>
+# Page2 Test
+* Let's see... your Image should be displayed below:
+<span id="ImageSpan"></span>
 
+<script input="hidden"> PageTwoScript() </script>
+
+# Page3 Test

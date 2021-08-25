@@ -59,19 +59,6 @@ function LiaBeginning() {
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 function Beginning() {
     
     RestBody();
