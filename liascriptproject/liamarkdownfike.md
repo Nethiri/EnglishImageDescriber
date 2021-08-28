@@ -10,6 +10,8 @@ language: en
 narrator: US English Female
 
 script: http://localhost:3000/home/newliaIndex.js
+script: http://localhost:3000/home/usefullFunctions.js
+script: http://localhost:3000/home/discriptionTypes.js
 
 link: http://localhost:3000/home/style.css
 
@@ -18,37 +20,54 @@ script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/consys.js
 link: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/consys.css
 
-script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul-lia-bridge.js
-
-script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul.js
-link: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul.css
-
-
 
 comment:  Try to write a short comment about
           your course, multiline is also okay.
 -->
 
-# ImageDescriber
-* The application will help you learn how to propperly describe an image
-* In order to use this tool, please insert a link to an image you'd like to describe below
-* You may find such a link by copying the direct image parth to it from a website
-* Like such: https://i.pinimg.com/originals/38/b0/c7/38b0c7ff528df3d3f8f5e2799d507063.jpg
+# Image Import
+The application will help you learn how to propperly describe an image. In order to use this tool, please insert a link to an image you'd like to describe below:
+
+You may find such a link by copying the direct image parth to it from a website (Example: https://i.pinimg.com/originals/38/b0/c7/38b0c7ff528df3d3f8f5e2799d507063.jpg )
 
 * Now, please insert the link into the textbox below:
-<span id="LoadImage"></span>
+<lia-keep><span id="LoadImage"></span></lia-keep>
 
-* If you already have an ongoing project though, you'd probably want to reload where you left of... please do so below
-<span id="LoadProject"></span>
+<lia-keep></br></br></br></lia-keep>
+
+* **If you already have an ongoing project though, you'd probably want to reload where you left of... please do so below**
+<lia-keep> <span id="LoadProject"></span> </lia-keep> 
 
 <script input="hidden"> PageOneScript() </script>
 
 
 
-# Page2 Test
-* Let's see... your Image should be displayed below:
-<span id="ImageSpan"></span>
+# Image Description
+Let's see... your Image should be displayed below:
 
+
+<lia-keep> <img id="ImageLocation"></lia-keep>
+<script input="hidden"> insertImage() </script>
+
+* If not, please make sure you finish the "Image Import" Page of this presentation 
+
+
+
+## Image Discription Part 1:
+<img id="ImageLocation">
+
+<div id=Task1></div>
+<textarea rows="10" id="DescrPart1"></textarea>
+<script input="hidden"> insertImage() </script>
 <script input="hidden"> PageTwoScript() </script>
 
-# Page3 Test
+
+
+
+
+
+## Page3 Test
+
+| tables | are | <div id="klaus"></div> |
+|--------|:---:|-----------------------:|
+|aksjdga|alsjdjbgadg|asldjgnjadsfg| 

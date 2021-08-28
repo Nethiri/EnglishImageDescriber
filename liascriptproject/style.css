@@ -26,5 +26,9 @@ input[type=file]::file-selector-button {
     border-radius: 10px;
 }
 
+textarea {
+    width: 100%;
+    border: 2px solid lightseagreen;
+}
 
 
