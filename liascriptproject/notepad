@@ -7,3 +7,6 @@ script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul-lia-brid
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul.js
 link: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/lul.css
+
+script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/consys.js
+link: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/consys.css

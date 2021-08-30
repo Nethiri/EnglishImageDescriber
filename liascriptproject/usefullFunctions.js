@@ -58,9 +58,9 @@ function CreateFileSelector() {
 function createTypeSelect(args) {
     let select = document.createElement("select");
     select.onchange = function() {
-        args[0] = select.value;
+        ProgramSelect = select.value;
     }
-    for(let i = 1; i < args.length; i++) {
+    for(let i = 0; i < args.length; i++) {
         let opt = document.createElement("option");
         opt.value = args[i];
         opt.appendChild(document.createTextNode(args[i]));
@@ -111,4 +111,11 @@ function ClearID(args) {
     catch{
         console.log("Tried to ClearID on " + obj + " which seems to not exist...")
     }
+}
+
+function createEditableText(text) {
+    let div = document.createElement("Div");
+    div.innerHTML = text;
+    //todo...
+    return div;
 }

@@ -17,9 +17,6 @@ link: http://localhost:3000/home/style.css
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
 
-script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/consys.js
-link: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/consys.css
-
 
 comment:  Try to write a short comment about
           your course, multiline is also okay.
@@ -46,7 +43,7 @@ You may find such a link by copying the direct image parth to it from a website 
 Let's see... your Image should be displayed below:
 
 
-<lia-keep> <img id="ImageLocation"></lia-keep>
+<lia-keep><img id="ImageLocation"></lia-keep>
 <script input="hidden"> insertImage() </script>
 
 * If not, please make sure you finish the "Image Import" Page of this presentation 
@@ -56,18 +53,61 @@ Let's see... your Image should be displayed below:
 ## Image Discription Part 1:
 <img id="ImageLocation">
 
-<div id=Task1></div>
-<textarea rows="10" id="DescrPart1"></textarea>
+<div id="Task1"></div>
+
+<lia-keep><textarea rows="10" id="DescrPart1"></textarea></lia-keep>
+
 <script input="hidden"> insertImage() </script>
-<script input="hidden"> PageTwoScript() </script>
+<script input="hidden"> PageDescriptionScript("DescrPart1", ProgramSelect, 0, "Task1") </script>
 
+## Image Discription Part 2:
+<img id="ImageLocation">
 
+<div id="Task2"></div>
 
+<lia-keep><textarea rows="10" id="DescrPart2"></textarea></lia-keep>
 
+<script input="hidden"> insertImage() </script>
+<script input="hidden"> PageDescriptionScript("DescrPart2", ProgramSelect, 1, "Task2") </script>
 
+## Image Discription Part 3:
+<img id="ImageLocation">
 
-## Page3 Test
+<div id="Task3"></div>
 
-| tables | are | <div id="klaus"></div> |
-|--------|:---:|-----------------------:|
-|aksjdga|alsjdjbgadg|asldjgnjadsfg| 
+<lia-keep><textarea rows="10" id="DescrPart3"></textarea></lia-keep>
+
+<script input="hidden"> insertImage() </script>
+<script input="hidden"> PageDescriptionScript("DescrPart3", ProgramSelect, 2, "Task3") </script>
+
+## Image Discription Part 4:
+<img id="ImageLocation">
+
+<div id="Task4"></div>
+
+<lia-keep><textarea rows="10" id="DescrPart4"></textarea></lia-keep>
+
+<script input="hidden"> insertImage() </script>
+<script input="hidden"> PageDescriptionScript("DescrPart4", ProgramSelect, 3, "Task4") </script>
+
+## Image Discription Part 5:
+<img id="ImageLocation">
+
+<div id="Task5"></div>
+
+<lia-keep><textarea rows="10" id="DescrPart5"></textarea></lia-keep>
+
+<script input="hidden"> insertImage() </script>
+<script input="hidden"> PageDescriptionScript("DescrPart5", ProgramSelect, 4, "Task5") </script>
+
+# Corrections:
+
+Now that we have the majority done, let's get you looking over what you've done...
+
+| Image | 
+|---------------------------------|
+|  |
+|  |
+|  |
+|  |
+|  |

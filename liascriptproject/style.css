@@ -1,6 +1,7 @@
 #LinkBox {
     width: 75%;
     border: 2px solid lightseagreen;
+    color: black;
 }
 
 button {
@@ -29,6 +30,7 @@ input[type=file]::file-selector-button {
 textarea {
     width: 100%;
     border: 2px solid lightseagreen;
+    color: black;
 }
 
 

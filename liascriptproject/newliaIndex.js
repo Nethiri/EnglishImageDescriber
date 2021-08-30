@@ -6,8 +6,8 @@ let ImageLink = undefined; //Link to the image
 let ProgramSelect = "Picture"; //Select Status - Picture, Graph, Code, ... standart Picture
 let TheImage = document.createElement("img");
 
-let TextBoxContent = [];
-let textbox1test = undefined;
+let TBContent = [ "" , "" , "" , "", "" ]
+
 
 
 
@@ -21,25 +21,27 @@ function PageOneScript() {
     let LinkInput = document.createElement("input");
     LinkInput.id = "LinkBox"
     LinkInput.value = testSRC;
-    let StatusSelect = createTypeSelect([ProgramSelect, "Picture", "Graph", "Code"])
+    let StatusSelect = createTypeSelect(["Picture", "Graph", "Code"])
     StatusSelect.id = "StatusSelector";
     let fileSelector = CreateFileSelector();   
     button.innerHTML = "Load Image";
-    button.addEventListener("click", function() { loadImage(LinkInput.value); })
+    button.addEventListener("click", function() { 
+        //alert("Ich wurde geklickt!");
+        loadImage(LinkInput.value); 
+        window.location = "http://localhost:3000/liascript/index.html?http://localhost:3000//liamarkdownfike.md#2";
+    })
     AppendToID("LoadImage", [button, LinkInput, StatusSelect]);
     AppendToID("LoadProject", fileSelector);
 }
 
-function PageTwoScript() {
-    let location = document.getElementById("Task1");
-    let TB = document.getElementById("DescrPart1");
-    if(ProgramSelect == "Picture") {
-        location.innerHTML = descriptionType.picture(1);
-    }
-    TB.addEventListener("input", function() {
-        textbox1test = TB.value;
+function PageDescriptionScript(textbox, task, num, taskLocation) {
+    let taskElement = document.getElementById(taskLocation);
+    let textBoxElement = document.getElementById(textbox);
+    textBoxElement.innerHTML = TBContent[num];
+    textBoxElement.addEventListener("input", function() {
+        TBContent[num] = textBoxElement.value;
     })
-
-
-
+    if(task == "Picture") {taskElement.innerHTML = descriptionType.picture(num);}
+    if(task == "Graph") {taskElement.innerHTML = descriptionType.graph(num);}
+    if(task == "Code") {taskElement.innerHTML = descriptionType.code(num);} 
 }
