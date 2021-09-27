@@ -1,4 +1,3 @@
-
 function placeSelect() {
     let typeSelect = createTypeSelect(["Picture", "Graph", "Code"]);
     typeSelect.id = "TypeSelect";
@@ -36,6 +35,3 @@ function userTask() {
     }
 }
 
-function itWorked() {
-    alert("It worked as I wanted!");
-}

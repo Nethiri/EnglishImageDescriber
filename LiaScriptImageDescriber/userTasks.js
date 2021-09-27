@@ -1,4 +1,5 @@
 const userTasks = {}
+
 userTasks.graph = function() {
     let url = document.getElementById("LinkTextBox").value;
     return `
@@ -15,6 +16,8 @@ Here are some examples you may use:
 * In the picture you can see...   
 * The picture shows... 
             
-<button type="button" onclick="itWorked()" id="graphButton">Click Me!</button> 
+<textarea id="graphTextArea1">Please enter text here!</textArea>
+
+
 `
 }
