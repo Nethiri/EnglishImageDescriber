@@ -9,11 +9,11 @@ function placeSelect() {
 function placeLinkReader() {
     let LinkInput = document.createElement("input");
     let LaunchButton = document.createElement("button");
-    LaunchButton.onclick = function() { userTask(); }
+    //LaunchButton.onclick = function() { userTask(); }
     LaunchButton.innerHTML = "Lets go!"
     LaunchButton.id = "LaunchButton";
     LinkInput.id = "LinkTextBox";
-    LinkInput.addEventListener("change", function() {userTask()});
+    //LinkInput.addEventListener("change", function() {userTask()});
     document.getElementById("ImageLinkPlace").innerHTML = "";
     document.getElementById("ImageLinkPlace").appendChild(LinkInput);
     document.getElementById("ImageLinkPlace").appendChild(LaunchButton);
@@ -26,37 +26,16 @@ function placeFileReader() {
 }
 
 function userTask() {
-    document.getElementById("UserTaskPlace").innerHTML = "";
-
-
     switch(document.getElementById("TypeSelect").value) {
-        case "Picture": 
-            alert("Picture");
-            break;
-
+        case "Picture":
+            return userTasks.graph();
         case "Graph":
-            alert("Graph");
-            break;
+            return "ToDo Graph";
         case "Code": 
-            alert("Code");
-            break;
+            return "ToDo Code";
     }
-    
-    
-    let mystring = `
-Attention
-=========
+}
 
-To capture the attention of your readers, you should start with a good introduction phrase(s).
-
-Here are some examples you may use:
-
-* If you look at this picture, you will see... 
-* In the picture you can see...  
-* The picture shows...
-    
-<button type="button">Click Me!</button> 
-
-`
-    return mystring;
+function itWorked() {
+    alert("It worked as I wanted!");
 }

@@ -11,6 +11,7 @@ narrator: US English Female
 
 script: http://localhost:3000/home/imageDescriberFunctions.js
 script: http://localhost:3000/home/ImageDescriber.js
+script: http://localhost:3000/home/userTasks.js  
 
 link: http://localhost:3000/home/style.css
 
@@ -58,7 +59,11 @@ Once you have entered everything correctly, a script, generated just for you, sh
 <div id="UserTaskPlace">if you can see this, the function userTask() has not worked propperly...</div>
 
 <script modify="false" run-once="true"> 
-    //userTask();
-    //send.liascript(userTask());
-    
+    document.getElementById("UserTaskPlace").innerHTML = "";
+    document.getElementById("LaunchButton").onclick = function() {
+        send.liascript(userTask());
+    }
+    document.getElementById("LinkTextBox").addEventListener("change", function() {
+        send.liascript(userTask());
+    });
 </script>
