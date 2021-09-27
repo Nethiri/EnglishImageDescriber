@@ -10,9 +10,11 @@ logo: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/The_Great_Wave_o
 
 comment: Demo on dynamically creating LiaScript-content by using scripts. Furthermore it is demonstrated how macros can be combined to create more engaging courses.
 
-test: @Textanalysis.FULL
-
 import: https://raw.githubusercontent.com/liaTemplates/TextAnalysis/main/README.md
+
+@kaese
+<script>alert("@input");"LIA: wait";</script>
+@end
 
 imageDescriber
 Image: <script input="text" update-on-change="false" output="url">
@@ -212,7 +214,8 @@ Here are some examples you may use:
 \`\`\` text
 please enter som text
 \`\`\`
-@test
+@kaese
+<liakeep><button type="button">Click Me!</button></liakeep>
 
 
 more Stuff

@@ -68,6 +68,7 @@ function createTypeSelect(args) {
     }
     return select;
 }
+
 function insertImage() {
     if(TheImage.src == "") {
         TheImage.src = testSRC;
