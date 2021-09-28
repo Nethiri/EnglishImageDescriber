@@ -59,3 +59,30 @@ function fillTBwithInitialContent() {
         e.hasMYinit = true;
     }
 }
+
+function TextEditor() {
+    let placediv = document.getElementById("TextEditor");
+    placediv.innerHTML = "";
+
+    let keys = Object.keys(TBcontent);
+
+    for(let k of keys) {
+        let textDiv = document.createElement("div");
+        textDiv.innerHTML = TBcontent[k];
+        textDiv.ondblclick = function() {
+            textDiv.innerHTML = "";
+            let editor = document.createElement("textarea");
+            editor.value = TBcontent[k];
+            textDiv.appendChild(editor);
+            editor.focus();
+            editor.oninput = function() {TBcontent[k] = editor.value;}
+            
+            editor.addEventListener("focusout", function() {
+                TBcontent[k] = editor.value;
+                textDiv.innerHTML = TBcontent[k];
+                textDiv.removeChild(editor);
+            });
+        }
+        placediv.appendChild(textDiv);
+    }
+}

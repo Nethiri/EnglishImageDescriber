@@ -80,4 +80,9 @@ setTimeout(function() {
 
 # Last minute edits
 
-<div id="TextEditor" onclick='console.log("Hello!")'>If you can see this, then TextEditor() did not load propperly... </div>
+<div id="TextEditor">If you can see this, then TextEditor() did not load propperly... </div>
+
+<script>TextEditor()</script>
+
+# Text Analysis
+
