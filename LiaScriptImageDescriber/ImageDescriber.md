@@ -21,7 +21,8 @@ comment:  This is a small tool, which will help the user to learn how to propper
 -->
 
 # Welcome
-This tool will help you discribing Images, Graphs and Code.
+This tool will help you discribing Images, Graphs and Code.<br>
+For general usability, we would recoment using the Darkmode of Liascript, as this tool has been designed with this colorpattern in mind.
 
 # Image Describer
 
@@ -58,12 +59,25 @@ Once you have entered everything correctly, a script, generated just for you, sh
 
 <div id="UserTaskPlace">if you can see this, the function userTask() has not worked propperly...</div>
 
-<script modify="false" run-once="true"> 
+<script modify="false"> 
+setTimeout(function() {
     document.getElementById("UserTaskPlace").innerHTML = "";
     document.getElementById("LaunchButton").onclick = function() {
+        ImgUrlLink = document.getElementById("LinkTextBox").value;
         send.liascript(userTask());
     }
     document.getElementById("LinkTextBox").addEventListener("change", function() {
+        ImgUrlLink = document.getElementById("LinkTextBox").value;
         send.liascript(userTask());
     });
+    if(ImgUrlLink != undefined){
+        send.liascript(userTask());
+    }
+
+}, 1000);
+"";
 </script>
+
+# Last minute edits
+
+<div id="TextEditor" onclick='console.log("Hello!")'>If you can see this, then TextEditor() did not load propperly... </div>
