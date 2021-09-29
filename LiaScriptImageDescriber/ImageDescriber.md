@@ -16,6 +16,9 @@ script: http://localhost:3000/home/userTasks.js
 link: http://localhost:3000/home/style.css
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
+import: https://raw.githubusercontent.com/liaTemplates/TextAnalysis/main/README.md
+
+test: @Textanalysis.FULL
 
 comment:  This is a small tool, which will help the user to learn how to propperly describe an image, a piece of code, or an graph.
 -->
@@ -85,4 +88,8 @@ setTimeout(function() {
 <script>TextEditor()</script>
 
 # Text Analysis
+
+On this page, you shall have an automated evaluation of your text below:
+
+
 
