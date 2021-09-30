@@ -91,5 +91,19 @@ setTimeout(function() {
 
 On this page, you shall have an automated evaluation of your text below:
 
+<script> TextCompress() </script>
+
+# Print / Save it!
+
+If you want to save your work, so you may come back later to it... please press the button below:
+<div id="Saver">If you can see this, then PlaceSaver() function has not loaded</div>
+<script>PlaceSaver()</script>
+
+If you want to print your work, you can do so below, though maybe add some nice informations like... your name and stuff first :)
+
+<div id="Printer">If you can see this, the PlacePrinter() function has not loaded propperly...</div>
+
+<script> PlacePrinter() </script>
+
 
 

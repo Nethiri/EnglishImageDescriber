@@ -1,4 +1,4 @@
-const TBcontent = {};
+let TBcontent = {};
 let ImgUrlLink = undefined;
 let intervallRunning = 0;
 
@@ -84,5 +84,60 @@ function TextEditor() {
             });
         }
         placediv.appendChild(textDiv);
+    }
+}
+
+function TextCompress() {
+    let str = "";
+    let keys = Object.keys(TBcontent);
+    for(let k of keys) {
+        str = str + TBcontent[k] + "    \n";
+    }
+    return str;
+}
+
+function PlacePrinter() {
+    let btn = document.createElement("button");
+    btn.innerHTML = "Print";
+    document.getElementById("Printer").innerHTML = "";
+    document.getElementById("Printer").append(btn);
+    //todo
+}
+
+function PrintDocument() {
+    //todo
+}
+
+function PlaceSaver() {
+    let btn = document.createElement("button");
+    btn.onclick = function() {
+        DownloadFile();
+    };
+    btn.innerHTML = "Download here!";
+    document.getElementById("Saver").innerHTML = "";
+    document.getElementById("Saver").appendChild(btn);
+}
+
+function DownloadFile() {
+    let dataheap = {
+        "source" : ImgUrlLink,
+        "text" : TBcontent
+    };
+
+    let json = JSON.stringify(dataheap);
+    json = [json];
+    let blob1 = new Blob(json, {type: "text/plain, charset=utf8"});
+    let isIE = false;
+    if(isIE) {
+        window.navigator.msSaveBlob(blob1, "ImageDiscriber.json");
+    } else {
+        let url = window.url || window.webkitURL;
+        link = url.createObjectURL(blob1);
+        var a = document.createElement("a");
+        a.download = "ImageDiscriber.json";
+        a.href = link;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     }
 }

@@ -24,8 +24,12 @@ function CreateFileSelector() {
                 console.log(ev.target.result);
                 let data = JSON.parse(ev.target.result);
                 console.log(data);
+                TBcontent = data.text;
+                ImgUrlLink = data.source;
+                document.getElementById("LinkTextBox").value = data.source;
                 //function which reads the JSON file and puts the data into the correct places
-                alert("ToDo - Contact Marco Naumann under marconaumann@t-online.de if you encounter this error, or via discord");
+                //alert("ToDo - Contact Marco Naumann under marconaumann@t-online.de if you encounter this error, or via discord");
+                document.getElementById("LaunchButton").click();
             }
             catch(ex){
                 alert(ex);
