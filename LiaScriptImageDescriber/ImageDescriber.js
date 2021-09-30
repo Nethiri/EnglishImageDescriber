@@ -91,10 +91,48 @@ function TextCompress() {
     let str = "";
     let keys = Object.keys(TBcontent);
     for(let k of keys) {
-        str = str + TBcontent[k] + "    \n";
+        str = str + TBcontent[k] + "\n";
     }
     return str;
 }
+
+function TestFULL(text) {
+    let ret = {}
+    ret["automatedReadabilityIndex"] = Textanalysis("automatedReadabilityIndex", text);
+    ret["colemanLiauIndex"] = Textanalysis("colemanLiauIndex", text);
+    ret["daleChallReadabilityScore"] = Textanalysis("daleChallReadabilityScore", text);
+    ret["fleschKincaidGrade"] = Textanalysis("fleschKincaidGrade", text);
+    ret["fleschReadingEase"] = Textanalysis("fleschReadingEase", text);
+    ret["gunningFog"] = Textanalysis("gunningFog", text);
+    ret["linsearWriteFormula"] = Textanalysis("linsearWriteFormula", text);
+    ret["readabilityConsensus"] = Textanalysis("readabilityConsensus", text);
+    ret["sentences"] = Textanalysis("sentences", text);
+    ret["smogIndex"] = Textanalysis("smogIndex", text);
+    ret["syllables"] = Textanalysis("syllables", text);
+    ret["words"] = Textanalysis("words", text);
+    ret["readingTime"] = Textanalysis("readingTime", text);
+    ret["speakingtime"] = Textanalysis("speakingtime", text);
+    return ret;
+}
+
+function PlaceTest() {
+    let txtdiv = document.createElement("div");
+    txtdiv.innerHTML = TextCompress();
+    let testdiv = document.createElement("div");
+    testdiv.id = "TestDiv"
+    let testObject = TestFULL(TextCompress());
+    let testKeys = Object.keys(testObject);
+
+    for(let test of testKeys) {
+        let testText = document.createElement("div");
+        testText.innerHTML = testObject[test];
+        testdiv.appendChild(testText);
+    }
+
+    document.getElementById("TestPlace").appendChild(testdiv);
+    document.getElementById("TestPlace").appendChild(txtdiv);
+}
+
 
 function PlacePrinter() {
     let btn = document.createElement("button");

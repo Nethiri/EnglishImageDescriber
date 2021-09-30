@@ -4,6 +4,10 @@
     color:black;
 }
 
+#TestDiv {
+    border:  5px solid black;
+}
+
 #LaunchButton{
     width: fit-content;
 }

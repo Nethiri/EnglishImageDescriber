@@ -90,8 +90,9 @@ setTimeout(function() {
 # Text Analysis
 
 On this page, you shall have an automated evaluation of your text below:
+<div id="TestPlace"></div>
 
-<script> TextCompress() </script>
+<script> PlaceTest() </script>
 
 # Print / Save it!
 
