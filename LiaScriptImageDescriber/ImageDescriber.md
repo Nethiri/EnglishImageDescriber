@@ -14,6 +14,7 @@ script: http://localhost:3000/home/ImageDescriber.js
 script: http://localhost:3000/home/userTasks.js  
 
 link: http://localhost:3000/home/style.css
+link: http://localhost:3000/home/print.css
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
 import: https://raw.githubusercontent.com/liaTemplates/TextAnalysis/main/README.md
@@ -100,7 +101,19 @@ If you want to save your work, so you may come back later to it... please press 
 <div id="Saver">If you can see this, then PlaceSaver() function has not loaded</div>
 <script>PlaceSaver()</script>
 
+---
+
 If you want to print your work, you can do so below, though maybe add some nice informations like... your name and stuff first :)
+
+Name:
+
+<input id="NameBox" oninput="OnNameChange(this)">
+
+Matrikel Number: 
+
+<input id="MatBox" oninput="OnNameChange(this)">
+
+
 
 <div id="Printer">If you can see this, the PlacePrinter() function has not loaded propperly...</div>
 

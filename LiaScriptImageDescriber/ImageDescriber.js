@@ -1,4 +1,5 @@
 let TBcontent = {};
+let NameContent = {};
 let ImgUrlLink = undefined;
 let intervallRunning = 0;
 
@@ -48,6 +49,10 @@ function userTask() {
 
 function TBonChange(tb) {
     TBcontent[tb.id] = tb.value;
+}
+
+function OnNameChange(tb) {
+    NameContent[tb.id] = tb.value;
 }
 
 function fillTBwithInitialContent() {
@@ -137,13 +142,71 @@ function PlaceTest() {
 function PlacePrinter() {
     let btn = document.createElement("button");
     btn.innerHTML = "Print";
+    btn.onclick = function() {
+        PrintDocument();
+    }
     document.getElementById("Printer").innerHTML = "";
-    document.getElementById("Printer").append(btn);
+    document.getElementById("Printer").appendChild(btn);
     //todo
 }
 
 function PrintDocument() {
-    //todo
+    let div_to_print = document.createElement("div");
+    let table = document.createElement("table");
+    let tableRow1 = document.createElement("tr");
+    //table row 1:
+    //image
+    let img = document.createElement("img");
+    img.id = "pr_Img"
+    img.src = ImgUrlLink;
+    let colImage = document.createElement("td");
+    colImage.appendChild(img);
+    
+    //author information
+    let AuthorName = document.createElement("div");
+    AuthorName.innerHTML = document.getElementById("NameBox").value;
+    let MatrNb = document.createElement("div");
+    MatrNb.innerHTML = document.getElementById("MatBox").value;
+
+    let authorInfo = document.createElement("td");  
+    authorInfo.appendChild(document.createTextNode("Name:"));
+    authorInfo.appendChild(AuthorName);
+    authorInfo.appendChild(document.createTextNode("Matrikl Nbr:"));
+    authorInfo.appendChild(MatrNb);
+    
+    colImage.style = "width: 50%"
+    authorInfo.style = "width: 50%"
+    tableRow1.appendChild(colImage);
+    tableRow1.appendChild(authorInfo);
+    //table
+    table.appendChild(tableRow1);
+
+    let tableRow2 = document.createElement("tr");
+    // table row 2:
+    let tb_div = document.createElement("td"); 
+    tb_div.colSpan = 2; 
+    let printKeys = Object.keys(TBcontent);
+    for(let printText of printKeys) {
+        temp = document.createElement("div")
+        let contentText = TBcontent[printText];
+        contentText = contentText.split("\n");
+        for(let txt of contentText) {
+            temp.appendChild(document.createTextNode(txt));
+            temp.appendChild(document.createElement("br"));
+        }
+        tb_div.appendChild(temp);
+        tb_div.appendChild(document.createElement("br"));
+    }
+    tableRow2.appendChild(tb_div);
+    table.appendChild(tableRow2);
+    div_to_print.appendChild(table);
+    //console.log(div_to_print.innerHTML);
+    let printContent = div_to_print.innerHTML;
+    let orginalContents = document.body.innerHTML;
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = orginalContents;
+    PlacePrinter();
 }
 
 function PlaceSaver() {

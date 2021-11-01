@@ -43,3 +43,8 @@ textarea {
     color: black;
 }
 
+input {
+    width: 50%;
+    border: 2px solid lightseagreen;
+    color: black;
+}
