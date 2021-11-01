@@ -9,9 +9,9 @@ language: en
 
 narrator: US English Female
 
-script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/imageDescriberFunctions.js
-script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/ImageDescriber.js
-script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/userTasks.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
 
 link: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/style.css
 link: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/print.css
