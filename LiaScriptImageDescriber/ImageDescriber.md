@@ -3,7 +3,7 @@ author:   Naumann Marco
 
 email:    marconaumann@t-online.de
 
-version:  0.0.1
+version:  0.0.2
 
 language: en
 
