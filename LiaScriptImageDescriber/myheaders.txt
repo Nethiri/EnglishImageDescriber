@@ -9,9 +9,9 @@ link: http://localhost:3000/home/print.css
 
 Imports - Online:
 
-script: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/imageDescriberFunctions.js
-script: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/ImageDescriber.js
-script: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/userTasks.js
+script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/imageDescriberFunctions.js
+script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/ImageDescriber.js
+script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/userTasks.js
 
-link: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/style.css
-link: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/print.css
+link: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/style.css
+link: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/print.css
