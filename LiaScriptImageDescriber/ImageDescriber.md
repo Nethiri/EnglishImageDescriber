@@ -9,12 +9,12 @@ language: en
 
 narrator: US English Female
 
-script: http://localhost:3000/home/imageDescriberFunctions.js
-script: http://localhost:3000/home/ImageDescriber.js
-script: http://localhost:3000/home/userTasks.js  
+script: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/imageDescriberFunctions.js
+script: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/ImageDescriber.js
+script: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/userTasks.js
 
-link: http://localhost:3000/home/style.css
-link: http://localhost:3000/home/print.css
+link: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/style.css
+link: https://github.com/Nethiri/EnglishImageDescriber/blob/main/LiaScriptImageDescriber/print.css
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
 import: https://raw.githubusercontent.com/liaTemplates/TextAnalysis/main/README.md
