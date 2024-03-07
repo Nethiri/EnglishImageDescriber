@@ -37,15 +37,21 @@ script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScript
 link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/codemirror.min.css
 
 my stuff
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
+o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/taskSelection.js
+o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
+o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
+o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
 
-link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
-link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
+o_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
+o_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
 
+script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/taskSelection.js
+script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/imageDescriberFunctions.js
+script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/ImageDescriber.js
+script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/userTasks.js
 
-
+link: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/style.css
+link: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/print.css
 
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
