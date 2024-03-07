@@ -46,8 +46,6 @@ You can either describe a picture, an graph or a piece of code...
 
 <div id="TypeSelectorPlace">if you can see this, the function placeSelect() has not loaded propperly...</div>
 
-<div id="TypeSelectorFollowingContentPlace">if you can see this, the function onSelectChange(), as a event of placeSelect()'s selector has not loaded propperly...</div>
-
 <script>placeSelect();</script>
 
 <script modify="false"> 
