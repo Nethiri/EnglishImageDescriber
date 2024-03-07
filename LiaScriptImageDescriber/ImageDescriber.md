@@ -9,33 +9,43 @@ language: en
 
 narrator: US English Female
 
-script: http://localhost:3000/home/html2canvas.js
-script: http://localhost:3000/home/codemirror.js
-script: http://localhost:3000/home/prism.min.js
+in testing
+offline_script: http://localhost:3000/home/html2canvas.js
+offline_script: http://localhost:3000/home/codemirror.js
+offline_script: http://localhost:3000/home/prism.min.js
 
-link: http://localhost:3000/home/codemirror.min.css
-
-
-
-script: http://localhost:3000/home/imageDescriberFunctions.js
-script: http://localhost:3000/home/taskSelection.js
-script: http://localhost:3000/home/ImageDescriber.js
-script: http://localhost:3000/home/userTasks.js
+offline_link: http://localhost:3000/home/codemirror.min.css
 
 
-link: http://localhost:3000/home/style.css
-link: http://localhost:3000/home/print.css
+my stuff
+offline_script: http://localhost:3000/home/imageDescriberFunctions.js
+offline_script: http://localhost:3000/home/taskSelection.js
+offline_script: http://localhost:3000/home/ImageDescriber.js
+offline_script: http://localhost:3000/home/userTasks.js
+
+
+offline_link: http://localhost:3000/home/style.css
+offline_link: http://localhost:3000/home/print.css
 
 
 
+in testing
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/html2canvas.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/codemirror.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/prism.min.js
+
+link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/codemirror.min.css
+
+my stuff
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
+
+link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
+link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
 
 
-OnLine_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
-OnLine_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
-Online_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
 
-Online_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
-Online_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
 
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
