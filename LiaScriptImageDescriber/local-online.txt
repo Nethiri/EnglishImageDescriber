@@ -1,0 +1,24 @@
+o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/taskSelection.js
+o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
+o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
+o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
+
+o_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
+o_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
+
+
+
+
+script: http://localhost:3000/home/html2canvas.js
+script: http://localhost:3000/home/codemirror.js
+script: http://localhost:3000/home/prism.min.js
+
+link: http://localhost:3000/home/codemirror.min.css
+
+script: http://localhost:3000/home/imageDescriberFunctions.js
+script: http://localhost:3000/home/taskSelection.js
+script: http://localhost:3000/home/ImageDescriber.js
+script: http://localhost:3000/home/userTasks.js
+
+link: http://localhost:3000/home/style.css
+link: http://localhost:3000/home/print.css

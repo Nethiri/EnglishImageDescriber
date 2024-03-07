@@ -9,42 +9,6 @@ language: en
 
 narrator: US English Female
 
-in testing
-offline_script: http://localhost:3000/home/html2canvas.js
-offline_script: http://localhost:3000/home/codemirror.js
-offline_script: http://localhost:3000/home/prism.min.js
-
-offline_link: http://localhost:3000/home/codemirror.min.css
-
-
-my stuff
-offline_script: http://localhost:3000/home/imageDescriberFunctions.js
-offline_script: http://localhost:3000/home/taskSelection.js
-offline_script: http://localhost:3000/home/ImageDescriber.js
-offline_script: http://localhost:3000/home/userTasks.js
-
-
-offline_link: http://localhost:3000/home/style.css
-offline_link: http://localhost:3000/home/print.css
-
-
-
-in testing
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/html2canvas.js
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/codemirror.js
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/prism.min.js
-
-link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/codemirror.min.css
-
-my stuff
-o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/taskSelection.js
-o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
-o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
-o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
-
-o_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
-o_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
-
 script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/taskSelection.js
 script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/imageDescriberFunctions.js
 script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/ImageDescriber.js
@@ -52,6 +16,13 @@ script: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/Lia
 
 link: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/style.css
 link: https://raw.githubusercontent.com/Nethiri/EnglishImageDescriber/main/LiaScriptImageDescriber/print.css
+
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/html2canvas.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/codemirror.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/prism.min.js
+
+link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/codemirror.min.css
+
 
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
