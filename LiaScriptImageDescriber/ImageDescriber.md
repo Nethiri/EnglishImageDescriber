@@ -9,12 +9,34 @@ language: en
 
 narrator: US English Female
 
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
+script: http://localhost:3000/home/html2canvas.js
+script: http://localhost:3000/home/codemirror.js
+script: http://localhost:3000/home/prism.min.js
 
-link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
-link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
+link: http://localhost:3000/home/codemirror.min.css
+
+
+
+script: http://localhost:3000/home/imageDescriberFunctions.js
+script: http://localhost:3000/home/taskSelection.js
+script: http://localhost:3000/home/ImageDescriber.js
+script: http://localhost:3000/home/userTasks.js
+
+
+link: http://localhost:3000/home/style.css
+link: http://localhost:3000/home/print.css
+
+
+
+
+
+OnLine_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
+OnLine_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
+Online_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
+
+Online_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
+Online_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
+
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
 import: https://raw.githubusercontent.com/liaTemplates/TextAnalysis/main/README.md
@@ -37,50 +59,22 @@ You can either describe a picture, an graph or a piece of code...
 
 <div id="TypeSelectorPlace">if you can see this, the function placeSelect() has not loaded propperly...</div>
 
+<div id="TypeSelectorFollowingContentPlace">if you can see this, the function onSelectChange(), as a event of placeSelect()'s selector has not loaded propperly...</div>
+
 <script>placeSelect();</script>
 
----
-Now that we have the general idea of what you want to do, we need the verry object you would like to train discribing on.  
-
-For the current itteration of this program, please insert a Link into the inputbox below which is a direct link to an image of what you want to discribe.
-
-Here is an example Link: https://www.seekpng.com/png/detail/176-1761248_elder-goddess-little-pony-mlp-magnaluna.png 
-
-**Link to your Image:**
-<div id="ImageLinkPlace">if you can see this, the function placeLinkReader() has not loaded propperly... </div>
-
-<script>placeLinkReader();</script>
-
----
-Some of you may already have started a project earlyer... if that is the case... feel free to open it here...
-<div id="FileReaderPlace">if you can see this, the function placeFileReader() has not worked propperly...</div>
-
-<script>placeFileReader()</script>
-
----
-
-Once you have entered everything correctly, a script, generated just for you, should display your tasks below.
-
-<div id="UserTaskPlace">if you can see this, the function userTask() has not worked propperly...</div>
-
 <script modify="false"> 
-setTimeout(function() {
-    document.getElementById("UserTaskPlace").innerHTML = "";
-    document.getElementById("LaunchButton").onclick = function() {
-        ImgUrlLink = document.getElementById("LinkTextBox").value;
-        send.liascript(userTask());
-    }
-    document.getElementById("LinkTextBox").addEventListener("change", function() {
-        ImgUrlLink = document.getElementById("LinkTextBox").value;
-        send.liascript(userTask());
-    });
-    if(ImgUrlLink != undefined){
-        send.liascript(userTask());
-    }
 
-}, 1000);
-"";
+let eventListenerDIV = document.getElementById('TypeSelectorPlace');
+eventListenerDIV.addEventListener('sendLia', function (event) {
+    let stringData = event.detail;
+    send.liascript(stringData);
+    console.log('send.liascript has been raised!');
+    //console.log(stringData);
+});
+
 </script>
+
 
 # Last minute edits
 

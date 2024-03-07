@@ -1,27 +1,82 @@
+
+
 let TBcontent = {};
 let NameContent = {};
-let ImgUrlLink = undefined;
+let ImgUrlLink;
 let intervallRunning = 0;
 
+let SelectOption = ["Picture", "Graph", "Code"]
+let SelectisNew = true;
+let LastSentTaskString;
+
+let typeSelectValue = SelectOption[0];
+let codeTextBlock;
+
+
 function placeSelect() {
-    let typeSelect = createTypeSelect(["Picture", "Graph", "Code"]);
+    //create new typeSelect
+    let typeSelect = createTypeSelect(SelectOption);
     typeSelect.id = "TypeSelect";
+
+    typeSelect.onchange = function() {
+        if(typeSelect.value == SelectOption[0]) {
+            //load picture boxes
+            LastSentTaskString = taskSelection.picture;
+            sendLia(LastSentTaskString);
+            setTimeout(function() {        
+                placeLinkReader();
+                placeFileReader();
+            }, 100);
+        }
+        if(typeSelect.value == SelectOption[1]) {
+            //currently load pictureboxes too
+            LastSentTaskString = taskSelection.picture;
+            sendLia(LastSentTaskString);
+            setTimeout(function() {        
+                placeLinkReader();
+                placeFileReader();
+            }, 100);
+        }
+        if(typeSelect.value == SelectOption[2]) {
+            LastSentTaskString = taskSelection.code;
+            sendLia(LastSentTaskString);
+            setTimeout(function() {
+                placeCodeBlock();
+            }, 100);
+        }            
+    }   
+    
+    typeSelect.dispatchEvent(new Event("change"));
+
+    
     document.getElementById("TypeSelectorPlace").innerHTML = "";
     document.getElementById("TypeSelectorPlace").appendChild(typeSelect);
-
-    if(intervallRunning == 1) return; 
+    //if(intervallRunning == 1) return; 
     setInterval(fillTBwithInitialContent, 100);
-    intervallRunning = 1;
+    //intervallRunning = 1;
+}
+
+function createTypeSelect(args) {
+    let select = document.createElement("select");
+    for(let i = 0; i < args.length; i++) {
+        let opt = document.createElement("option");
+        opt.value = args[i];
+        opt.appendChild(document.createTextNode(args[i]));
+        select.appendChild(opt);
+    }
+    return select;
 }
 
 function placeLinkReader() {
     let LinkInput = document.createElement("input");
     let LaunchButton = document.createElement("button");
-    //LaunchButton.onclick = function() { userTask(); }
+    LaunchButton.onclick = function() { 
+        buttonPressFunction();
+    }
     LaunchButton.innerHTML = "Lets go!"
     LaunchButton.id = "LaunchButton";
     LinkInput.id = "LinkTextBox";
-    if(ImgUrlLink != undefined){
+    if(ImgUrlLink != null){
         LinkInput.value = ImgUrlLink;
     }
     //LinkInput.addEventListener("change", function() {userTask()});
@@ -36,16 +91,79 @@ function placeFileReader() {
     document.getElementById("FileReaderPlace").appendChild(fileSelector);
 }
 
-function userTask() {
-    switch(document.getElementById("TypeSelect").value) {
-        case "Picture":
-            return userTasks.graph();
-        case "Graph":
-            return "ToDo Graph";
-        case "Code": 
-            return "ToDo Code";
+
+
+function placeCodeBlock() {
+    let CodeBlockPlace = document.getElementById("CodeBlockPlace");
+    let textBox = document.createElement("textarea");
+    textBox.id = "codeInput";
+    let convertButton = document.createElement("button");
+    convertButton.innerHTML = "Convert to Image";
+    CodeBlockPlace.append(textBox);
+    CodeBlockPlace.append(convertButton);
+
+    // Assign the function reference, not the result of the function
+    let codeEditor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
+        lineNumbers: true,
+        mode: 'text/x-java',
+    });
+
+    convertButton.onclick = CodeButtonFunction(codeEditor.getValue());
+}
+
+function CodeButtonFunction(code) {
+    console.log("Onclick!");
+    let codeContainer = document.createElement("div");
+    codeContainer.innerHTML = code;
+    Prism.highlightAllUnder(codeContainer);
+    document.getElementById("CodeBlockPlace").append(codeContainer);
+
+    let canvas = document.createElement("canvas");
+    canvas.width = 800;
+    canvas.height = 600;
+
+    html2canvas(codeContainer, { canvas: canvas }).then(canvas => {
+        const imageContainer = document.getElementById('CodeBlockPlace');
+        //imageContainer.innerHTML = '';
+        imageContainer.appendChild(canvas);
+    });
+
+}
+
+
+
+
+
+
+function buttonPressFunction() {
+    console.log("Button Pressed");
+    let state = document.getElementById("TypeSelect").value;
+
+    if(state == SelectOption[0]){
+        //what happens when the button is pressed and picture is selected
+        ImgUrlLink = document.getElementById("LinkTextBox").value;
+        console.log(ImgUrlLink);
+        LastSentTaskString = taskSelection.picture;
+        LastSentTaskString += "![]("+ ImgUrlLink + ")"
+        LastSentTaskString += userTasks.picture;
+        sendLia(LastSentTaskString);
     }
 }
+
+async function sendLia(stringData) {
+    let myEvent = new CustomEvent("sendLia", {detail: stringData});
+    document.getElementById("TypeSelectorPlace").dispatchEvent(myEvent);
+    sleep(1000);
+    return;
+}
+
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+  
+
+
 
 function TBonChange(tb) {
     TBcontent[tb.id] = tb.value;
@@ -242,3 +360,8 @@ function DownloadFile() {
         document.body.removeChild(a);
     }
 }
+
+
+
+
+

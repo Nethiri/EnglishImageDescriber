@@ -1,18 +1,3 @@
-
-function createTypeSelect(args) {
-    let select = document.createElement("select");
-    select.onchange = function() {
-        ProgramSelect = select.value;
-    }
-    for(let i = 0; i < args.length; i++) {
-        let opt = document.createElement("option");
-        opt.value = args[i];
-        opt.appendChild(document.createTextNode(args[i]));
-        select.appendChild(opt);
-    }
-    return select;
-}
-
 function CreateFileSelector() {
     let fileSelector = document.createElement("input");
     fileSelector.type = "file";
@@ -38,4 +23,14 @@ function CreateFileSelector() {
         fr.readAsText(e.target.files[0]);
     }
     return fileSelector;
+}
+
+
+function LiaScriptPlaceElements(liaScriptString, replaceObject) {
+
+    replaceDIV = document.getElementById(replaceObject);
+    replaceDIV.innerHTML = "";
+    replaceDIV.innerHTML = send.liascript(userTask());
+    
+
 }

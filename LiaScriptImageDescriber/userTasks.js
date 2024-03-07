@@ -1,10 +1,8 @@
 const userTasks = {}
 
-userTasks.graph = function() {
-    let url = document.getElementById("LinkTextBox").value;
-    return `
----------
-![](${url})
+userTasks.picture = `
+
+---
 
 Task - Attention  
 ================
@@ -61,4 +59,6 @@ Here are some examples:\n
 <textarea id="graphTextArea5" oninput="TBonChange(this)">Please enter text here!</textArea>  \n
 
 `
-}
+
+    //let url = document.getElementById("LinkTextBox").value;
+//
