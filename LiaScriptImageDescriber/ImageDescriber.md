@@ -118,6 +118,3 @@ Matrikel Number:
 <div id="Printer">If you can see this, the PlacePrinter() function has not loaded propperly...</div>
 
 <script> PlacePrinter() </script>
-
-
-
