@@ -1,19 +1,5 @@
-o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/taskSelection.js
-o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
-o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
-o_script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
-
-o_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
-o_link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
-
-
-
-
-script: http://localhost:3000/home/html2canvas.js
-script: http://localhost:3000/home/codemirror.js
-script: http://localhost:3000/home/prism.min.js
-
-link: http://localhost:3000/home/codemirror.min.css
+link: http://localhost:3000/home/highlightJS/default.min.css
+script: http://localhost:3000/home/highlightJS/highlight.min.js
 
 script: http://localhost:3000/home/imageDescriberFunctions.js
 script: http://localhost:3000/home/taskSelection.js
@@ -22,3 +8,32 @@ script: http://localhost:3000/home/userTasks.js
 
 link: http://localhost:3000/home/style.css
 link: http://localhost:3000/home/print.css
+
+script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
+import: https://raw.githubusercontent.com/liaTemplates/TextAnalysis/main/README.md
+
+
+
+
+
+
+
+
+
+
+
+
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/taskSelection.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/userTasks.js
+
+link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
+link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
+
+link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/highlightJS/default.min.css
+
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/highlightJS/highlight.min.js
+
+
+

@@ -9,6 +9,7 @@ language: en
 
 narrator: US English Female
 
+
 script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/taskSelection.js
 script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/imageDescriberFunctions.js
 script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/ImageDescriber.js
@@ -17,12 +18,9 @@ script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScript
 link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/style.css
 link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/print.css
 
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/html2canvas.js
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/codemirror.js
-script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/prism.min.js
+link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/highlightJS/default.min.css
 
-link: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/codemirror.min.css
-
+script: https://cdn.jsdelivr.net/gh/Nethiri/EnglishImageDescriber@main/LiaScriptImageDescriber/highlightJS/highlight.min.js
 
 
 script: https://cdn.jsdelivr.net/gh/kaptn-seebar/english-lia@latest/base.js
@@ -46,22 +44,22 @@ You can either describe a picture, an graph or a piece of code...
 
 <div id="TypeSelectorPlace">if you can see this, the function placeSelect() has not loaded propperly...</div>
 
-<div id="TypeSelectorFollowingContentPlace">if you can see this, the function onSelectChange(), as a event of placeSelect()'s selector has not loaded propperly...</div>
-
 <script>placeSelect();</script>
 
 <script modify="false"> 
 
 let eventListenerDIV = document.getElementById('TypeSelectorPlace');
 eventListenerDIV.addEventListener('sendLia', function (event) {
-    let stringData = event.detail;
+    let stringData = event.detail.stringData;
     send.liascript(stringData);
     console.log('send.liascript has been raised!');
+    console.log(event);
+    if(event.detail.callback != null) {
+        event.detail.callback();
+    }
     //console.log(stringData);
 });
-
 </script>
-
 
 # Last minute edits
 

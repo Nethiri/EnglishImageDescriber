@@ -1,5 +1,3 @@
-
-
 let TBcontent = {};
 let NameContent = {};
 let ImgUrlLink;
@@ -22,35 +20,36 @@ function placeSelect() {
         if(typeSelect.value == SelectOption[0]) {
             //load picture boxes
             LastSentTaskString = taskSelection.picture;
-            sendLia(LastSentTaskString);
-            setTimeout(function() {        
-                placeLinkReader();
-                placeFileReader();
-            }, 100);
+            sendLia(LastSentTaskString, function() {
+                setTimeout(function() {        
+                    placeLinkReader();
+                    placeFileReader();
+                }, 0);
+            })
         }
         if(typeSelect.value == SelectOption[1]) {
             //currently load pictureboxes too
             LastSentTaskString = taskSelection.picture;
-            sendLia(LastSentTaskString);
-            setTimeout(function() {        
-                placeLinkReader();
-                placeFileReader();
-            }, 100);
+            sendLia(LastSentTaskString, function() {
+                setTimeout(function() {        
+                    placeLinkReader();
+                    placeFileReader();
+                }, 0);
+            })
         }
         if(typeSelect.value == SelectOption[2]) {
             LastSentTaskString = taskSelection.code;
-            sendLia(LastSentTaskString);
-            setTimeout(function() {
-                placeCodeBlock();
-            }, 100);
+            sendLia(LastSentTaskString, function() {
+                setTimeout(function() {
+                    placeCodeBlock();
+                }, 100);
+            })            
         }            
     }   
-    
-    typeSelect.dispatchEvent(new Event("change"));
 
-    
     document.getElementById("TypeSelectorPlace").innerHTML = "";
     document.getElementById("TypeSelectorPlace").appendChild(typeSelect);
+    typeSelect.dispatchEvent(new Event("change"));
     //if(intervallRunning == 1) return; 
     setInterval(fillTBwithInitialContent, 100);
     //intervallRunning = 1;
@@ -94,46 +93,54 @@ function placeFileReader() {
 
 
 function placeCodeBlock() {
-    let CodeBlockPlace = document.getElementById("CodeBlockPlace");
+    let codeBlockPlace = document.getElementById("CodeBlockPlace");
     let textBox = document.createElement("textarea");
+    let languageSelect = createTypeSelect(hljs.listLanguages());
+    languageSelect.id = "langSelect";
+    languageSelect.onchange = function() {CodeButtonFunction(codeElement,textBox.value, languageSelect.value);}
     textBox.id = "codeInput";
+    textBox.oninput = function() {CodeButtonFunction(codeElement,textBox.value, languageSelect.value);}
     let convertButton = document.createElement("button");
-    convertButton.innerHTML = "Convert to Image";
-    CodeBlockPlace.append(textBox);
-    CodeBlockPlace.append(convertButton);
 
-    // Assign the function reference, not the result of the function
-    let codeEditor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
-        lineNumbers: true,
-        mode: 'text/x-java',
-    });
 
-    convertButton.onclick = CodeButtonFunction(codeEditor.getValue());
+    convertButton.innerHTML = "Convert to Highlighted Syntax";
+    codeBlockPlace.append(languageSelect);
+    codeBlockPlace.append(textBox);
+    
+    let codeElement = document.createElement("code");
+    let pre = document.createElement("pre");
+    pre.id = "codeOutPut";
+    codeBlockPlace.append(pre);
+
+    pre.append(codeElement);
+
+
+    
+
+    convertButton.onclick = function() {CodeButtonFunction(codeElement,textBox.value, languageSelect.value);}
+    
+    codeBlockPlace.append(convertButton);
 }
 
-function CodeButtonFunction(code) {
-    console.log("Onclick!");
-    let codeContainer = document.createElement("div");
-    codeContainer.innerHTML = code;
-    Prism.highlightAllUnder(codeContainer);
-    document.getElementById("CodeBlockPlace").append(codeContainer);
+function CodeButtonFunction(codeElement, code, language) {  
+    codeElement.innerHTML = '';
+    codeElement.className = "language-" + language;
+    codeElement.appendChild(document.createTextNode(code));
+    codeElement.removeAttribute('data-highlighted');
 
-    let canvas = document.createElement("canvas");
-    canvas.width = 800;
-    canvas.height = 600;
+    hljs.highlightElement(codeElement);
 
-    html2canvas(codeContainer, { canvas: canvas }).then(canvas => {
-        const imageContainer = document.getElementById('CodeBlockPlace');
-        //imageContainer.innerHTML = '';
-        imageContainer.appendChild(canvas);
-    });
+    if(document.getElementById("LaunchButton") == null) {
+        let LaunchButton = document.createElement("button");
+        LaunchButton.onclick = function() { 
+            buttonPressFunction();
+        }
+        LaunchButton.innerHTML = "Lets go!"
+        LaunchButton.id = "LaunchButton"; 
+        document.getElementById("CodeBlockPlace").append(LaunchButton);
+    }
 
 }
-
-
-
-
-
 
 function buttonPressFunction() {
     console.log("Button Pressed");
@@ -148,12 +155,28 @@ function buttonPressFunction() {
         LastSentTaskString += userTasks.picture;
         sendLia(LastSentTaskString);
     }
+    if(state == SelectOption[1]){
+        //what happens when the button is pressed and picture is selected
+        ImgUrlLink = document.getElementById("LinkTextBox").value;
+        console.log(ImgUrlLink);
+        LastSentTaskString = taskSelection.picture;
+        LastSentTaskString += "![]("+ ImgUrlLink + ")"
+        LastSentTaskString += userTasks.picture;
+        sendLia(LastSentTaskString);
+    }
+    if(state == SelectOption[2]){
+        //what happens when the button is pressed and picture is selected
+        LastSentTaskString = taskSelection.code;
+        LastSentTaskString += userTasks.code;
+        sendLia(LastSentTaskString);
+    }
+
 }
 
-async function sendLia(stringData) {
-    let myEvent = new CustomEvent("sendLia", {detail: stringData});
+async function sendLia(stringData, callback) {
+    let myEvent = new CustomEvent("sendLia", {detail: {stringData, callback}});
     document.getElementById("TypeSelectorPlace").dispatchEvent(myEvent);
-    sleep(1000);
+
     return;
 }
 

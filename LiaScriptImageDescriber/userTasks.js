@@ -60,5 +60,24 @@ Here are some examples:\n
 
 `
 
-    //let url = document.getElementById("LinkTextBox").value;
-//
+userTasks.code = `
+Task - DEMO CODE DESCRIPTION TB1  
+================
+        
+To capture the attention of your readers, you should start with a good introduction phrase(s).\n
+Here are some examples you may use:
+
+* If you look at this picture, you will see...
+* In the picture you can see...   
+* The picture shows... 
+            
+<textarea id="graphTextArea1" oninput="TBonChange(this)">Please enter text here!</textArea> \n
+
+Task - DEMO CODE DESCRIPTION TB2  
+==============
+
+DESCRIPTION OF ANOTHER TASK...
+
+<textarea id="graphTextArea2" oninput="TBonChange(this)">Please enter text here!</textArea>  \n
+
+`
