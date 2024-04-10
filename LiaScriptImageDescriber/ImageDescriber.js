@@ -159,7 +159,7 @@ function buttonPressFunction() {
         //what happens when the button is pressed and picture is selected
         ImgUrlLink = document.getElementById("LinkTextBox").value;
         console.log(ImgUrlLink);
-        LastSentTaskString = taskSelection.picture;
+        LastSentTaskString = taskSelection.graph;
         LastSentTaskString += "![]("+ ImgUrlLink + ")"
         LastSentTaskString += userTasks.picture;
         sendLia(LastSentTaskString);
